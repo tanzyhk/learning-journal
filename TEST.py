@@ -1,18 +1,27 @@
-import math
+def mul(*num):
+    if len(num)==0:
+        raise TypeError
+    sum=1
+    for i in num:
+        sum=sum*i
+    return sum
 
-def quadratic(a, b, c):
-    delta=math.sqrt(b**2-a*c*4)
-    x=(-b+delta)/(2*a)
-    y=(-b-delta)/(2*a)
-    return x,y
-
-# 测试:
-print('quadratic(2, 3, 1) =', quadratic(2, 3, 1))
-print('quadratic(1, 3, -4) =', quadratic(1, 3, -4))
-
-if quadratic(2, 3, 1) != (-0.5, -1.0):
-    print('测试失败')
-elif quadratic(1, 3, -4) != (1.0, -4.0):
-    print('测试失败')
+# 测试
+print('mul(5) =', mul(5))
+print('mul(5, 6) =', mul(5, 6))
+print('mul(5, 6, 7) =', mul(5, 6, 7))
+print('mul(5, 6, 7, 9) =', mul(5, 6, 7, 9))
+if mul(5) != 5:
+    print('mul(5)测试失败!')
+elif mul(5, 6) != 30:
+    print('mul(5, 6)测试失败!')
+elif mul(5, 6, 7) != 210:
+    print('mul(5, 6, 7)测试失败!')
+elif mul(5, 6, 7, 9) != 1890:
+    print('mul(5, 6, 7, 9)测试失败!')
 else:
-    print('测试成功')
+    try:
+        mul()
+        print('mul()测试失败!')
+    except TypeError:
+        print('测试成功!')
